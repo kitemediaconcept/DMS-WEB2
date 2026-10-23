@@ -611,7 +611,7 @@
       margin: 72px auto 48px;
       padding: 0 32px;
       display: grid;
-      grid-template-columns: minmax(0, 1fr) 320px;
+      grid-template-columns: minmax(0, 1fr) 390px;
       align-items: end;
       gap: 64px;
     }
@@ -638,19 +638,118 @@
       color: var(--color-ink);
     }
 
+    /* Typewriter animation for "Bahrain." */
+    .fx-typewriter {
+      display: inline-block;
+      vertical-align: bottom;
+      box-sizing: content-box;
+      font-weight: 600;
+      color: #073f2c;
+      white-space: nowrap;
+      overflow: hidden;
+      width: 5.75ch; /* Exact fit for proportional "Bahrain." in Inter */
+      border-right: 3px solid #0d9b49;
+      margin-right: 2px;
+      animation: fx-type 3.6s steps(14) infinite,
+                 fx-caret 0.65s steps(1) infinite;
+    }
+
+    @keyframes fx-type {
+      0%, 10%   { width: 0; }
+      55%, 90%  { width: 5.75ch; }
+      100%      { width: 0; }
+    }
+
+    @keyframes fx-caret {
+      50% { border-color: transparent; }
+    }
+    }
+
+
+    .hero-description {
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+    }
+
     .hero-description p {
-      margin: 0 0 24px;
+      margin: 0 0 18px;
       font-family: var(--font-display);
       color: var(--color-quiet-graphite);
       font-size: 16px;
-      line-height: 1.35;
-      letter-spacing: -0.4px;
+      line-height: 1.45;
+      letter-spacing: -0.2px;
     }
 
     .hero-actions {
       display: flex;
+      align-items: center;
       gap: 12px;
-      flex-wrap: wrap;
+      flex-wrap: nowrap; /* Keep on the same line */
+    }
+
+    .hero-actions .button {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      height: 46px;
+      padding: 0 22px;
+      border-radius: 9999px;
+      font-family: var(--font-display);
+      font-size: 14.5px;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -0.2px;
+      text-decoration: none;
+      white-space: nowrap;
+      transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+      cursor: pointer;
+      box-sizing: border-box;
+      flex-shrink: 0;
+    }
+
+    /* Primary CTA Button: Deep DMS Emerald/Forest Theme (#073f2c / #163f30) */
+    .hero-actions .button:not(.light) {
+      background: #073f2c;
+      color: #ffffff;
+      border: 1px solid #073f2c;
+      box-shadow: 0 2px 8px rgba(7, 63, 44, 0.2);
+    }
+
+    .hero-actions .button:not(.light):hover {
+      background: #0c573d;
+      border-color: #0c573d;
+      transform: translateY(-1px);
+      box-shadow: 0 4px 14px rgba(7, 63, 44, 0.28);
+    }
+
+    .hero-actions .button:not(.light):active {
+      transform: translateY(0);
+      background: #052f21;
+    }
+
+    /* Secondary CTA Button: Clean DMS Soft Mint Tint (#edf7f1 / #e6f4ed) */
+    .hero-actions .button.light {
+      background: #edf7f1;
+      color: #073f2c;
+      border: 1px solid #d2eade;
+    }
+
+    .hero-actions .button.light:hover {
+      background: #e1f2e8;
+      border-color: #bfe1ce;
+      color: #04291d;
+      transform: translateY(-1px);
+    }
+
+    .hero-actions .button.light:active {
+      transform: translateY(0);
+      background: #d4ebd9;
+    }
+
+    .hero-actions .button:focus-visible {
+      outline: 2px solid #073f2c;
+      outline-offset: 3px;
     }
 
     /* ==========================================================================
@@ -720,6 +819,257 @@
       );
     }
 
+    
+    /* GLOBE BANNER SLIDE */
+    .banner-slide.is-globe {
+      background: radial-gradient(circle at 78% 50%, #1c503b 0%, #143d2e 45%, #0c261c 100%);
+    }
+
+    .banner-slide.is-globe > img {
+      position: absolute !important;
+      top: 50% !important;
+      right: 5% !important;
+      left: auto !important;
+      bottom: auto !important;
+      width: 48% !important;
+      max-width: 520px !important;
+      height: auto !important;
+      aspect-ratio: 1 !important;
+      object-fit: contain !important;
+      transform: translateY(-50%) !important;
+      filter: drop-shadow(0 20px 45px rgba(0, 0, 0, 0.6)) brightness(1.04) contrast(1.05) !important;
+      animation: banner-globe-float 8s ease-in-out infinite !important;
+      z-index: 1 !important;
+      pointer-events: none !important;
+    }
+
+    @keyframes banner-globe-float {
+      0%, 100% {
+        transform: translateY(-50%) rotate(0deg);
+      }
+      50% {
+        transform: translateY(-55%) rotate(1deg);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .banner-slide.is-globe > img {
+        width: 65%;
+        right: -8%;
+      }
+    }
+
+    /* SLIDE-SPECIFIC THEMES (LIGHT / WHITE BACKGROUND FOR MINISTRY SERVICES & ATTESTATION) */
+    .banner[data-theme="light"] {
+      background: #ffffff;
+      color: #111111;
+    }
+
+    /* Keep the glassmorphism badges visible and beautifully styled with blur effect */
+    .banner[data-theme="light"] .banner-badges {
+      display: grid !important;
+      position: absolute;
+      top: 32px;
+      left: 32px;
+      z-index: 2;
+      gap: 8px;
+    }
+
+    .banner[data-theme="light"] .banner-badge {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      padding: 13px 20px;
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: blur(16px);
+      -webkit-backdrop-filter: blur(16px);
+      color: #163625;
+      font-size: 13px;
+      font-weight: 500;
+      line-height: 1.3;
+      letter-spacing: -0.2px;
+      box-shadow: 0 4px 20px rgba(0, 0, 0, 0.06);
+    }
+
+    .banner[data-theme="light"] .badge-icon {
+      color: #1a7447;
+      font-weight: 700;
+    }
+
+    /* Soft overlay on white background */
+    .banner[data-theme="light"] .banner-overlay {
+      background: linear-gradient(
+        to right,
+        rgba(255, 255, 255, 0.96) 0%,
+        rgba(255, 255, 255, 0.82) 32%,
+        rgba(255, 255, 255, 0.25) 58%,
+        transparent 80%
+      );
+    }
+
+    .banner[data-theme="light"] .banner-caption .eyebrow {
+      color: #5d6d63;
+      font-weight: 600;
+      letter-spacing: 0.1em;
+    }
+
+    .banner[data-theme="light"] .banner-caption h2 {
+      color: #073f2c;
+      font-weight: 600;
+      text-shadow: 0 1px 2px rgba(255, 255, 255, 0.9);
+    }
+
+    /* Hide the bottom thumbnail strip on light slides as requested */
+    .banner[data-theme="light"] .banner-thumbnails {
+      display: none !important;
+    }
+
+    /* Hide top circular controls on light slides */
+    .banner[data-theme="light"] .banner-controls {
+      display: none !important;
+    }
+
+    /* Light slide image positioning */
+    .banner-slide.is-light {
+      background: #ffffff;
+    }
+
+    .banner-slide.is-light > img {
+      object-fit: contain;
+      object-position: right center;
+      width: 100%;
+      height: 100%;
+    }
+
+    /* BANNER CTA BUTTON */
+    .banner-cta-button {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      padding: 12px 24px;
+      border-radius: 9999px;
+      font-family: var(--font-display);
+      font-size: 14px;
+      font-weight: 600;
+      line-height: 1;
+      letter-spacing: -0.2px;
+      text-decoration: none;
+      white-space: nowrap;
+      cursor: pointer;
+      box-sizing: border-box;
+      background: #ffffff;
+      color: #073f2c;
+      border: 1px solid rgba(255, 255, 255, 0.4);
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
+      transition: all 180ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .banner-cta-button svg {
+      width: 15px;
+      height: 15px;
+      fill: none;
+      stroke: currentColor;
+      stroke-width: 2;
+      stroke-linecap: round;
+      stroke-linejoin: round;
+      transition: transform 180ms ease;
+    }
+
+    .banner-cta-button:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.3);
+      background: #f7faf8;
+    }
+
+    .banner-cta-button:hover svg {
+      transform: translateX(3px);
+    }
+
+    /* Light Theme (Slide 2) CTA button: DMS Deep Emerald Pill */
+    .banner[data-theme="light"] .banner-cta-button {
+      background: #073f2c;
+      color: #ffffff;
+      border: 1px solid #073f2c;
+      box-shadow: 0 4px 14px rgba(7, 63, 44, 0.25);
+    }
+
+    .banner[data-theme="light"] .banner-cta-button:hover {
+      background: #0c573d;
+      border-color: #0c573d;
+      box-shadow: 0 6px 18px rgba(7, 63, 44, 0.35);
+    }
+
+    /* REMOVE ARROWS ON SLIDE 2 AS REQUESTED (Hide previous and next arrows on light slide) */
+    .banner[data-theme="light"] .banner-controls {
+      display: none !important; /* Remove top controls (arrows & pause button) on slide 2 */
+    }
+
+    /* 5 VERY SMALL GRADIENT GRAY DOTS */
+    .banner-dots {
+      position: absolute;
+      bottom: 22px;
+      left: 50%;
+      transform: translateX(-50%);
+      display: flex;
+      align-items: center;
+      gap: 7px;
+      z-index: 3;
+      padding: 6px 12px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.65);
+      backdrop-filter: blur(8px);
+      -webkit-backdrop-filter: blur(8px);
+      border: 1px solid rgba(0, 0, 0, 0.06);
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    }
+
+    /* On dark theme, slightly tinted background */
+    .banner[data-theme="dark"] .banner-dots {
+      background: rgba(10, 20, 14, 0.55);
+      border-color: rgba(255, 255, 255, 0.12);
+    }
+
+    .banner-dot {
+      width: 6px;
+      height: 6px;
+      padding: 0;
+      border: 0;
+      border-radius: 50%;
+      background: linear-gradient(135deg, #d1d5db 0%, #9ca3af 100%); /* gradient gray */
+      opacity: 0.55;
+      cursor: pointer;
+      transition: all 250ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .banner[data-theme="dark"] .banner-dot {
+      background: linear-gradient(135deg, #6b7280 0%, #4b5563 100%);
+      opacity: 0.6;
+    }
+
+    .banner-dot:hover {
+      opacity: 0.85;
+      transform: scale(1.2);
+    }
+
+    .banner-dot.is-active {
+      width: 18px;
+      border-radius: 9999px;
+      opacity: 1;
+      background: linear-gradient(135deg, #4b5563 0%, #1f2937 100%); /* active gradient dark gray */
+      box-shadow: 0 1px 4px rgba(0, 0, 0, 0.18);
+    }
+
+    .banner[data-theme="light"] .banner-dot.is-active {
+      background: linear-gradient(135deg, #374151 0%, #111827 100%);
+    }
+
+    .banner[data-theme="dark"] .banner-dot.is-active {
+      background: linear-gradient(135deg, #ffffff 0%, #d1d5db 100%);
+    }
+
     /* GLASS CARDS — Mollie In-Media Transaction Badges */
     .banner-badges {
       position: absolute;
@@ -782,7 +1132,7 @@
     }
 
     /* CONTROLS — Circular Buttons */
-    .banner-controls {
+    .banner-controls { display: none !important; 
       position: absolute;
       top: 30px;
       right: 32px;
@@ -915,7 +1265,7 @@
 
       .hero-intro {
         gap: 36px;
-        grid-template-columns: minmax(0, 1fr) 280px;
+        grid-template-columns: minmax(0, 1fr) 360px;
         margin: 54px auto 36px;
       }
 
@@ -3051,38 +3401,177 @@ input, select, textarea {
       padding: 32px 24px 64px;
     }
 
-    /* LOGO ROW */
-    .dms-logo-row {
-      display: grid;
-      grid-template-columns: repeat(8, minmax(0, 1fr));
-      align-items: center;
-      gap: 34px;
-      padding: 0 48px;
-      margin-bottom: 56px;
+    
+    /* ==========================================================================
+       DMS AUTHORITIES & REGULATORY ENTITIES (5 ICONS - User Spec)
+       ========================================================================== */
+    .dms-authorities {
+      padding: 56px 24px 64px;
+      background:
+        radial-gradient(
+          ellipse at 50% 100%,
+          rgba(221, 242, 228, 0.32),
+          transparent 65%
+        ),
+        #fff;
     }
 
-    .dms-logo-item {
-      height: 52px;
+    .dms-authorities__container {
+      width: 100%;
+      max-width: 1320px;
+      margin: 0 auto;
+    }
+
+    /* Small, centred heading */
+    .dms-authorities__header {
+      max-width: 560px;
+      margin: 0 auto 36px;
+      text-align: center;
+    }
+
+    .dms-authorities__tag {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-bottom: 14px;
+      padding: 6px 13px;
+
+      border: 1px solid #dcebe1;
+      border-radius: 100px;
+      background: linear-gradient(135deg, #fff, #edf7f0);
+
+      font-size: 10px;
+      font-weight: 600;
+      line-height: 16px;
+      letter-spacing: 1.4px;
+      color: #256344;
+    }
+
+    .dms-authorities .dms-authorities__heading {
+      margin: 0;
+      font-family: Inter, "Inter Placeholder", sans-serif;
+      font-size: 16px;
+      font-weight: 400;
+      line-height: 23px;
+      letter-spacing: -0.48px;
+      color: #6b6b6b;
+      text-align: center;
+      text-wrap: balance;
+    }
+
+    /* Five large logos */
+    .dms-authorities__logos {
+      display: grid;
+      grid-template-columns: repeat(5, minmax(0, 1fr));
+      align-items: center;
+      gap: 30px;
+
+      margin: 0;
+      padding: 12px 0;
+      list-style: none;
+    }
+
+    .dms-authorities__logo {
       display: flex;
       align-items: center;
       justify-content: center;
+
+      min-width: 0;
+      height: 150px;
+      padding: 8px;
     }
 
-    .dms-logo-item img {
+    .dms-authorities__logo img {
       display: block;
-      width: auto;
-      max-width: 115px;
-      max-height: 42px;
+      width: 100%;
+      height: auto;
+      max-width: 240px;
+      max-height: 125px;
       object-fit: contain;
-      filter: grayscale(100%);
-      opacity: 0.75;
-      transition: opacity 200ms ease, filter 200ms ease;
+      transition: transform 200ms ease, opacity 200ms ease;
     }
 
-    .dms-logo-item:hover img {
-      filter: grayscale(0%);
-      opacity: 1;
+    .dms-authorities__logo:hover img {
+      transform: scale(1.03);
     }
+
+    /* Portrait emblem needs a different size */
+    .dms-authorities__logo--embassy img {
+      width: auto;
+      max-width: 100%;
+      height: 130px;
+      max-height: 130px;
+    }
+
+    /* Tablet */
+    @media (max-width: 1000px) {
+      .dms-authorities {
+        padding: 44px 20px 48px;
+      }
+
+      .dms-authorities__logos {
+        gap: 16px;
+      }
+
+      .dms-authorities__logo {
+        height: 125px;
+        padding: 4px;
+      }
+
+      .dms-authorities__logo img {
+        max-height: 105px;
+      }
+
+      .dms-authorities__logo--embassy img {
+        height: 110px;
+        max-height: 110px;
+      }
+    }
+
+    /* Mobile: three logos, then two centred logos */
+    @media (max-width: 640px) {
+      .dms-authorities {
+        padding: 36px 16px 40px;
+      }
+
+      .dms-authorities__header {
+        margin-bottom: 24px;
+      }
+
+      .desktop-break {
+        display: none;
+      }
+
+      .dms-authorities__logos {
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 16px 12px;
+        padding: 0;
+      }
+
+      .dms-authorities__logo {
+        grid-column: span 2;
+        height: 100px;
+        padding: 0;
+      }
+
+      .dms-authorities__logo:nth-child(4) {
+        grid-column: 2 / span 2;
+      }
+
+      .dms-authorities__logo:nth-child(5) {
+        grid-column: 4 / span 2;
+      }
+
+      .dms-authorities__logo img {
+        max-height: 88px;
+      }
+
+      .dms-authorities__logo--embassy img {
+        height: 96px;
+        max-height: 96px;
+      }
+    }
+
 
     /* REFINED GRID */
     .dms-services-grid {
@@ -4417,7 +4906,7 @@ input, select, textarea {
     @media (max-width: 1000px) {
       .dms-layout {
         gap: 48px;
-        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.2fr);
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.25fr);
       }
 
       .dms-service-row {
@@ -5407,7 +5896,211 @@ input, select, textarea {
     }
 
     .dms-gold-stack .dgs-copy,
-    .dms-gold-stack .dgs-visual {
+    .dms-gold-stack /* GLOBAL VISA SERVICE CARD (CARD 3) */
+    .dgs-card-global-visa {
+      padding: 0 !important;
+      overflow: hidden;
+      min-height: 480px;
+    }
+
+    .dgs-card-global-visa .visa-card {
+      position: relative;
+      isolation: isolate;
+      width: 100%;
+      min-height: 480px;
+      overflow: hidden;
+      border-radius: var(--radius);
+      background: radial-gradient(
+        ellipse at 90% 80%,
+        #edf0f2 0%,
+        #fafbfc 35%,
+        #ffffff 72%
+      );
+      display: flex;
+    }
+
+    .dgs-card-global-visa .visa-content {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      width: 54%;
+      min-height: 480px;
+      padding: clamp(32px, 4.5vw, 52px) clamp(24px, 3.5vw, 44px);
+    }
+
+    .dgs-card-global-visa .visa-heading {
+      margin: 0;
+      color: #161c23;
+      font-family: inherit;
+      font-size: clamp(34px, 3.8vw, 54px);
+      font-weight: 500;
+      letter-spacing: -0.04em;
+      line-height: 1.08;
+    }
+
+    .dgs-card-global-visa .visa-description {
+      max-width: 440px;
+      margin: 18px 0 0;
+      color: #646a75;
+      font-size: 15px;
+      line-height: 1.65;
+      letter-spacing: -0.015em;
+    }
+
+    .dgs-card-global-visa .visa-link {
+      display: inline-flex;
+      align-items: center;
+      align-self: flex-start;
+      gap: 12px;
+      margin-top: 22px;
+      padding: 6px 0;
+      color: #1b4931;
+      text-decoration: underline;
+      text-decoration-color: #a8ccb9;
+      text-underline-offset: 5px;
+      font-size: 14.5px;
+      font-weight: 600;
+      transition: color 200ms ease;
+    }
+
+    .dgs-card-global-visa .visa-link svg {
+      width: 20px;
+      height: 20px;
+      transition: transform 250ms ease;
+    }
+
+    .dgs-card-global-visa .visa-link:hover {
+      color: #073f2c;
+      text-decoration-color: #073f2c;
+    }
+
+    .dgs-card-global-visa .visa-link:hover svg {
+      transform: translateX(5px);
+    }
+
+    .dgs-card-global-visa .visa-services {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 20px 24px;
+      margin-top: auto;
+      padding-top: 36px;
+    }
+
+    .dgs-card-global-visa .visa-service {
+      margin: 0;
+      color: #252d36;
+      font-size: 15.5px;
+      font-weight: 500;
+      line-height: 1.4;
+      letter-spacing: -0.02em;
+    }
+
+    /* TRANSPARENT GLOBE IMAGE */
+    .dgs-card-global-visa .visa-globe {
+      position: absolute;
+      z-index: 1;
+      top: 0;
+      right: -8%;
+      width: 60%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      pointer-events: none;
+    }
+
+    .dgs-card-global-visa .visa-globe-image {
+      display: block;
+      flex-shrink: 0;
+      width: 108%;
+      max-width: none;
+      height: auto;
+      object-fit: contain;
+      user-select: none;
+      -webkit-user-drag: none;
+      animation: visa-globe-float 9s ease-in-out infinite;
+    }
+
+    @keyframes visa-globe-float {
+      0%, 100% {
+        transform: translateY(0);
+      }
+      50% {
+        transform: translateY(-10px);
+      }
+    }
+
+    @media (max-width: 900px) {
+      .dgs-card-global-visa .visa-card {
+        flex-direction: column;
+        min-height: auto;
+      }
+      .dgs-card-global-visa .visa-content {
+        width: 100%;
+        min-height: auto;
+        padding: 36px 24px 20px;
+      }
+      .dgs-card-global-visa .visa-services {
+        padding-top: 28px;
+        gap: 16px;
+      }
+      .dgs-card-global-visa .visa-globe {
+        position: relative;
+        top: auto;
+        right: auto;
+        width: 100%;
+        height: auto;
+        aspect-ratio: 1.3;
+        overflow: hidden;
+      }
+      .dgs-card-global-visa .visa-globe-image {
+        width: 100%;
+      }
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .dgs-card-global-visa .visa-globe-image {
+        animation: none;
+      }
+    }
+
+    /* EMBOSSED GOLDEN BAHRAIN VISA CARD VISUAL */
+    .dgs-golden-img-visual {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      position: relative;
+    }
+
+    .dgs-golden-card-container {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 100%;
+      max-width: 400px;
+      margin: 0 auto;
+      perspective: 1000px;
+    }
+
+    .dgs-golden-card-img {
+      max-height: 380px;
+      width: auto;
+      max-width: 100%;
+      object-fit: contain;
+      display: block;
+      filter: drop-shadow(0 20px 32px rgba(65, 53, 32, 0.22));
+      transition: transform 500ms cubic-bezier(0.16, 1, 0.3, 1), filter 500ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .dgs-card:hover .dgs-golden-card-img {
+      transform: translateY(-4px) scale(1.02);
+      filter: drop-shadow(0 26px 40px rgba(65, 53, 32, 0.28));
+    }
+
+    .dgs-visual {
       min-width: 0;
     }
 
@@ -5509,6 +6202,120 @@ input, select, textarea {
       outline: 2px solid #28543c;
       outline-offset: 5px;
     }
+
+    
+    
+    /* Attestation Document Full Bleed Display */
+    .dms-gold-stack .dgs-card-attestation {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      min-height: 440px;
+      padding: 0 !important;
+    }
+
+    .dms-gold-stack .dgs-attestation-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.15fr) minmax(0, 1.1fr);
+      align-items: stretch;
+      min-height: 440px;
+      width: 100%;
+    }
+
+    .dms-gold-stack .dgs-attestation-copy {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: clamp(32px, 4.5vw, 56px);
+      background: var(--card-bg);
+    }
+
+    .dms-gold-stack .dgs-attestation-visual {
+      position: relative;
+      z-index: 1;
+      overflow: hidden;
+      height: 100%;
+      min-height: 440px;
+    }
+
+    /* Full-bleed image occupying entire right half of the card */
+    .dms-gold-stack .dgs-attestation-img {
+      position: absolute;
+      inset: 0;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center right;
+      display: block;
+      transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
+    }
+
+    .dms-gold-stack .dgs-card-attestation:hover .dgs-attestation-img {
+      transform: scale(1.03);
+    }
+
+    /* Soft, smooth gradient on the left of the image blending into the card */
+    .dms-gold-stack .dgs-attestation-scrim {
+      position: absolute;
+      inset: 0;
+      z-index: 1;
+      pointer-events: none;
+      background: linear-gradient(
+        to right,
+        var(--card-bg) 0%,
+        rgba(248, 246, 242, 0.95) 12%,
+        rgba(248, 246, 242, 0.6) 28%,
+        rgba(248, 246, 242, 0.15) 45%,
+        transparent 65%
+      );
+    }
+
+    /* Floating caption overlay */
+    .dms-gold-stack .dgs-attestation-caption {
+      position: absolute;
+      right: 24px;
+      bottom: 20px;
+      z-index: 2;
+      padding: 6px 14px;
+      border-radius: 9999px;
+      background: rgba(255, 255, 255, 0.88);
+      backdrop-filter: blur(10px);
+      -webkit-backdrop-filter: blur(10px);
+      border: 1px solid rgba(0, 0, 0, 0.08);
+      color: #555248;
+      font-size: 11px;
+      font-weight: 500;
+      line-height: 1;
+      letter-spacing: 0.2px;
+      box-shadow: 0 4px 14px rgba(0, 0, 0, 0.06);
+    }
+
+    /* Tablet & Mobile responsive */
+    @media (max-width: 900px) {
+      .dms-gold-stack .dgs-attestation-grid {
+        grid-template-columns: 1fr;
+      }
+      .dms-gold-stack .dgs-attestation-copy {
+        padding: 32px 24px 24px;
+      }
+      .dms-gold-stack .dgs-attestation-visual {
+        min-height: 280px;
+        position: relative;
+      }
+      .dms-gold-stack .dgs-attestation-scrim {
+        background: linear-gradient(
+          to bottom,
+          var(--card-bg) 0%,
+          rgba(248, 246, 242, 0.7) 20%,
+          transparent 50%
+        );
+      }
+    }
+
 
     /* REFLECTIVE GOLD VISUAL */
     .dms-gold-stack .dgs-visual {
@@ -5927,7 +6734,7 @@ input, select, textarea {
         <p class="eyebrow">Your next chapter in Bahrain</p>
 
         <h1 id="hero-heading">
-          Strategic visas, corporate setup, and residency solutions in Bahrain.
+          Strategic visas, corporate setup, and residency solutions in <span class="fx-typewriter">Bahrain.</span>
         </h1>
       </div>
 
@@ -5939,7 +6746,7 @@ input, select, textarea {
 
         <div class="hero-actions">
           <a class="button" href="#contact">Get started now</a>
-          <a class="button light" href="#contact">Contact us</a>
+          <a class="button light" href="#contact">Contact sales</a>
         </div>
       </div>
     </section>
@@ -5947,6 +6754,7 @@ input, select, textarea {
     <!-- AUTOMATIC BANNER (Exact Mollie In-Media Proof & Controls) -->
     <section
       class="banner"
+      data-theme="light"
       id="hero-banner"
       aria-label="DMS services"
       aria-roledescription="carousel"
@@ -5957,23 +6765,29 @@ input, select, textarea {
       <div class="banner-badges">
         <div class="banner-badge">
           <span class="badge-icon" aria-hidden="true">✓</span>
-          <span>Clear guidance. Every step.</span>
+          <span>Official Ministry &amp; Embassy Attestation</span>
         </div>
 
         <div class="banner-badge">
           <span class="badge-icon" aria-hidden="true">▤</span>
-          <span>Document review and application support</span>
+          <span>MOFA Legalization &amp; Consular Authentication</span>
         </div>
 
         <div class="banner-badge">
           <span class="badge-icon" aria-hidden="true">↗</span>
-          <span>Solutions for your next chapter</span>
+          <span>Certified Translation &amp; Expedited Clearance</span>
         </div>
       </div>
 
       <div class="banner-caption">
         <p class="eyebrow">DMS Bahrain</p>
-        <h2>Bahrain Ministry Services</h2>
+        <h2>Document Attestation</h2>
+        <a class="banner-cta-button" href="#contact">
+          <span>Get started now</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true" focusable="false">
+            <path d="M5 12h14m-6-6 6 6-6 6"/>
+          </svg>
+        </a>
       </div>
 
       <div class="banner-controls">
@@ -5997,77 +6811,75 @@ input, select, textarea {
       </div>
 
       <div class="banner-thumbnails" aria-label="Choose a service"></div>
+      <div class="banner-dots" aria-label="Slide pagination" role="tablist"></div>
       <p class="sr-only slide-status" aria-live="polite"></p>
     </section>
 
-    <!-- REFINED DMS SERVICES SECTION (User Specification) -->
-  <section class="dms-services-section" id="services" aria-label="DMS services">
-    <!-- Partner Government Logos Row -->
-    <div class="dms-logo-row" aria-label="Client and partner logos">
-      <div class="dms-logo-item">
-        <img
-          src="logos/logo-1.png"
-          alt="Bahrain Chamber"
-          loading="lazy"
-        >
-      </div>
+      <!-- DMS AUTHORITIES & REGULATORY ENTITIES (5 ICONS) -->
+  <section class="dms-authorities" aria-labelledby="authorities-heading">
+    <div class="dms-authorities__container">
 
-      <div class="dms-logo-item">
-        <img
-          src="logos/logo-2.png"
-          alt="Ministry of Industry and Commerce"
-          loading="lazy"
-        >
-      </div>
+      <header class="dms-authorities__header">
+        <span class="dms-authorities__tag">AUTHORIZED</span>
 
-      <div class="dms-logo-item">
-        <img
-          src="logos/logo-3.png"
-          alt="The Embassy of the Kingdom of Saudi Arabia"
-          loading="lazy"
-        >
-      </div>
+        <h2 id="authorities-heading" class="dms-authorities__heading">
+          Integrated Across Key Bahrain Government<br class="desktop-break" />
+          Entities &amp; Regulatory Authorities
+        </h2>
+      </header>
 
-      <div class="dms-logo-item">
-        <img
-          src="logos/logo-4.png"
-          alt="Labour Market Regulatory Authority"
-          loading="lazy"
-        >
-      </div>
+      <ul class="dms-authorities__logos" aria-label="Entities and authorities">
+        <li class="dms-authorities__logo dms-authorities__logo--wps">
+          <img
+            src="https://dmsbharain.wasmer.app/wp-content/uploads/2026/10/wps-b.png"
+            alt="WPS"
+            loading="lazy"
+            decoding="async"
+          />
+        </li>
 
-      <div class="dms-logo-item">
-        <img
-          src="logos/logo-5.png"
-          alt="Nationality, Passports & Residence Affairs"
-          loading="lazy"
-        >
-      </div>
+        <li class="dms-authorities__logo dms-authorities__logo--moic">
+          <img
+            src="https://dmsbharain.wasmer.app/wp-content/uploads/2026/10/moic-svg-5-512x77-1.png"
+            alt="Ministry of Industry and Commerce"
+            loading="lazy"
+            decoding="async"
+          />
+        </li>
 
-      <div class="dms-logo-item">
-        <img
-          src="logos/logo-6.png"
-          alt="Bahrain Chamber"
-          loading="lazy"
-        >
-      </div>
+        <li class="dms-authorities__logo dms-authorities__logo--lmra">
+          <img
+            src="https://dmsbharain.wasmer.app/wp-content/uploads/2026/10/labour-market-regulatory-authority-secondary-variation-512x75-1.png"
+            alt="Labour Market Regulatory Authority"
+            loading="lazy"
+            decoding="async"
+          />
+        </li>
 
-      <div class="dms-logo-item">
-        <img
-          src="logos/logo-7.png"
-          alt="Ministry of Industry and Commerce"
-          loading="lazy"
-        >
-      </div>
+        <li class="dms-authorities__logo dms-authorities__logo--embassy">
+          <img
+            src="https://dmsbharain.wasmer.app/wp-content/uploads/2026/10/EMBASSY_KSA-removebg-preview.png"
+            alt="Embassy of Saudi Arabia"
+            loading="lazy"
+            decoding="async"
+          />
+        </li>
 
-      <div class="dms-logo-item">
-        <img
-          src="logos/logo-8.png"
-          alt="Labour Market Regulatory Authority"
-          loading="lazy"
-        >
-      </div>
+        <li class="dms-authorities__logo dms-authorities__logo--chamber">
+          <img
+            src="https://dmsbharain.wasmer.app/wp-content/uploads/2026/10/bahrain-chamber-preview-512x107-1.png"
+            alt="Bahrain Chamber"
+            loading="lazy"
+            decoding="async"
+          />
+        </li>
+      </ul>
+
     </div>
+  </section>
+
+  <!-- REFINED DMS SERVICES SECTION (User Specification) -->
+  <section class="dms-services-section" id="services" aria-label="DMS services">
 
     <!-- 10-Item Capability Grid -->
     <nav class="dms-services-grid" aria-label="Explore our services">
@@ -6202,8 +7014,8 @@ input, select, textarea {
             starts with the right support
           </h2>
 
-          <a class="dms-link" href="services.html#residency">
-            <span>Explore visa &amp; residency</span>
+          <a class="dms-link" href="services.html#business-setup">
+            <span>Company formation services</span>
             <svg viewBox="0 0 24 24" aria-hidden="true">
               <path d="m9 5 7 7-7 7"/>
             </svg>
@@ -6351,43 +7163,15 @@ input, select, textarea {
               </a>
             </div>
 
-            <div class="dgs-visual">
-              <div class="dgs-reflective">
-                <div class="dgs-metal">
-
-                  <div class="dgs-metal-top">
-                    <span class="dgs-brand">DMS.</span>
-                    <span class="dgs-country">BAHRAIN</span>
-                  </div>
-
-                  <div class="dgs-emblem" aria-hidden="true">
-                    <svg viewBox="0 0 64 64">
-                      <path d="M32 5 54 18v28L32 59 10 46V18Z"/>
-                      <path d="M32 13 47 22v20L32 51 17 42V22Z"/>
-                      <path d="M24 39V25h7c10 0 10 14 0 14Z"/>
-                    </svg>
-                  </div>
-
-                  <div class="dgs-metal-bottom">
-                    <div>
-                      <span class="dgs-metal-label">
-                        YOUR NEXT CHAPTER
-                      </span>
-                      <h3>Golden Visa</h3>
-                      <p>Guidance by DMS</p>
-                    </div>
-
-                    <svg class="dgs-sparkle"
-                      viewBox="0 0 32 32" aria-hidden="true">
-                      <path d="M16 3c0 9-4 13-13 13
-                        9 0 13 4 13 13 0-9 4-13 13-13
-                        -9 0-13-4-13-13Z"/>
-                    </svg>
-                  </div>
-
-                </div>
+            <div class="dgs-visual dgs-golden-img-visual">
+              <div class="dgs-golden-card-container">
+                <img
+                  class="dgs-golden-card-img"
+                  src="assets/Embossed Golden Bahrain Visa Card.png"
+                  alt="Embossed Golden Bahrain Visa Card held in hand"
+                  loading="lazy"
+                >
               </div>
-
               <span class="dgs-caption">
                 Bahrain Golden Visa services
               </span>
@@ -6397,114 +7181,88 @@ input, select, textarea {
         </article>
       </div>
 
-      <!-- SECOND CARD: CORPORATE MOBILITY & RESIDENCE PERMITS -->
+      <!-- SECOND CARD: DOCUMENT ATTESTATION SERVICES (FULL RIGHT IMAGE WITH LEFT GRADIENT) -->
       <div class="dgs-slot" style="--i: 1;">
-        <article class="dgs-card">
-          <div class="dgs-golden-layout">
-            <div class="dgs-copy">
-              <span class="dgs-eyebrow">RESIDENCE &amp; WORK PERMITS</span>
+        <article class="dgs-card dgs-card-attestation">
+          <div class="dgs-attestation-grid">
+            <div class="dgs-attestation-copy">
+              <span class="dgs-eyebrow">LEGALIZATION &amp; AUTHENTICATION</span>
               <h2 class="dgs-heading">
-                Corporate Mobility.<br>
-                Seamless Residency.
+                Document Attestation.<br>
+                Certified &amp; Approved.
               </h2>
               <p class="dgs-description">
-                Direct LMRA &amp; NPRA liaison for investor visas, executive work permits, and self-sponsorship with priority expedited processing.
+                Comprehensive document legalization, MOFA certification, embassy attestation, and certified translation services with priority clearance.
               </p>
               <ul class="dgs-benefits">
-                <li>Investor &amp; partner visas</li>
-                <li>Dependent family sponsorship</li>
-                <li>LMRA ceiling expansions</li>
+                <li>MOFA &amp; Ministry legalization</li>
+                <li>Embassy &amp; consular attestation</li>
+                <li>Certified Arabic &amp; legal translation</li>
               </ul>
               <a class="dgs-link" href="#contact">
-                Explore Residence Services
+                Explore Document Attestation Services
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M5 12h14m-6-6 6 6-6 6"/>
                 </svg>
               </a>
             </div>
-            <div class="dgs-visual">
-              <div class="dgs-reflective">
-                <div class="dgs-metal" style="background: linear-gradient(120deg, #1b4b35 0%, #2f6b4e 25%, #46966f 50%, #25583f 75%, #183e2c 100%); color: #eaf5ed;">
-                  <div class="dgs-metal-top">
-                    <span class="dgs-brand" style="color: #fff;">DMS.</span>
-                    <span class="dgs-country" style="color: #9cd4b5;">RESIDENCE PERMIT</span>
-                  </div>
-                  <div class="dgs-emblem" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" style="stroke: #b5e8cc;">
-                      <rect x="5" y="3" width="14" height="18" rx="2"/>
-                      <circle cx="12" cy="10" r="4"/>
-                      <path d="M8 10h8m-4-4c-2 2-2 6 0 8 m0-8c2 2 2 6 0 8M9 18h6"/>
-                    </svg>
-                  </div>
-                  <div class="dgs-metal-bottom">
-                    <div>
-                      <span class="dgs-metal-label" style="color: #a3deb9;">KINGDOM OF BAHRAIN</span>
-                      <h3 style="color: #fff;">Work &amp; Residency</h3>
-                      <p style="color: #c9ecd7;">Official LMRA / NPRA Liaison</p>
-                    </div>
-                    <svg class="dgs-sparkle" viewBox="0 0 32 32" aria-hidden="true" style="stroke: #bbf0d0;">
-                      <path d="M16 3c0 9-4 13-13 13 9 0 13 4 13 13 0-9 4-13 13-13 -9 0-13-4-13-13Z"/>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <span class="dgs-caption">Bahrain Residency &amp; Work Permits</span>
+
+            <div class="dgs-attestation-visual">
+              <div class="dgs-attestation-scrim" aria-hidden="true"></div>
+              <img
+                class="dgs-attestation-img"
+                src="assets/Stamped paper with purple seals.png"
+                alt="Official Embassy of Bahrain stamp seal and attestation document"
+                loading="lazy"
+              >
             </div>
           </div>
         </article>
       </div>
 
-      <!-- THIRD CARD: COMMERCIAL REGISTRATION & CORPORATE SETUP -->
+      <!-- THIRD CARD: GLOBAL VISA SERVICE -->
       <div class="dgs-slot" style="--i: 2;">
-        <article class="dgs-card">
-          <div class="dgs-golden-layout">
-            <div class="dgs-copy">
-              <span class="dgs-eyebrow">BUSINESS SETUP &amp; LICENSING</span>
-              <h2 class="dgs-heading">
-                Turnkey Entity Setup.<br>
-                100% Foreign Ownership.
+        <article class="dgs-card dgs-card-global-visa">
+          <div class="visa-card">
+            <div class="visa-content">
+              <span class="dgs-eyebrow">GLOBAL TRAVEL &amp; MOBILITY</span>
+
+              <h2 class="visa-heading" id="visa-title">
+                Global Visa<br>
+                Service
               </h2>
-              <p class="dgs-description">
-                Fast-track commercial registration (CR), ministry approvals, corporate bank accounts, and regulatory compliance since 1984.
+
+              <p class="visa-description">
+                Explore new destinations with confidence. Get assistance
+                with visa applications, document preparation, and travel
+                requirements.
               </p>
-              <ul class="dgs-benefits">
-                <li>MOIC commercial registration</li>
-                <li>Corporate structuring (W.L.L. &amp; Branches)</li>
-                <li>End-to-end ministry clearing</li>
-              </ul>
-              <a class="dgs-link" href="#contact">
-                Explore Corporate Setup
-                <svg viewBox="0 0 24 24" aria-hidden="true">
-                  <path d="M5 12h14m-6-6 6 6-6 6"/>
+
+              <a class="visa-link" href="#contact">
+                <span>Explore visa services</span>
+                <svg viewBox="0 0 24 24" fill="none" aria-hidden="true">
+                  <path d="M4 12h15M13 5l7 7-7 7" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/>
                 </svg>
               </a>
-            </div>
-            <div class="dgs-visual">
-              <div class="dgs-reflective">
-                <div class="dgs-metal" style="background: linear-gradient(120deg, #1f2d3d 0%, #2e4359 28%, #4a6785 52%, #2c3e53 78%, #162230 100%); color: #f0f4f8;">
-                  <div class="dgs-metal-top">
-                    <span class="dgs-brand" style="color: #fff;">DMS.</span>
-                    <span class="dgs-country" style="color: #9cb9d8;">CORPORATE SETUP</span>
-                  </div>
-                  <div class="dgs-emblem" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" style="stroke: #bdd3eb;">
-                      <rect x="5" y="5" width="14" height="16" rx="1.5"/>
-                      <path d="M9 5V3h6v2M9 9h1m4 0h1 M9 13h1m4 0h1M10 21v-4h4v4"/>
-                    </svg>
-                  </div>
-                  <div class="dgs-metal-bottom">
-                    <div>
-                      <span class="dgs-metal-label" style="color: #a8caee;">COMMERCIAL REGISTRATION</span>
-                      <h3 style="color: #fff;">Entity Formation</h3>
-                      <p style="color: #d1e2f5;">MOIC Sijilat Advisory</p>
-                    </div>
-                    <svg class="dgs-sparkle" viewBox="0 0 32 32" aria-hidden="true" style="stroke: #c8e0f8;">
-                      <path d="M16 3c0 9-4 13-13 13 9 0 13 4 13 13 0-9 4-13 13-13 -9 0-13-4-13-13Z"/>
-                    </svg>
-                  </div>
-                </div>
+
+              <div class="visa-services">
+                <p class="visa-service">Tourist Visa</p>
+                <p class="visa-service">Business Visa</p>
+                <p class="visa-service">Document Support</p>
+                <p class="visa-service">Application Assistance</p>
               </div>
-              <span class="dgs-caption">Bahrain Commercial Registration &amp; Licensing</span>
+            </div>
+
+            <div class="visa-globe" aria-hidden="true">
+              <img
+                class="visa-globe-image"
+                src="assets/global-visa-reference.png"
+                alt="Global visa travel networks transparent globe"
+                width="1254"
+                height="1254"
+                decoding="async"
+                draggable="false"
+              >
             </div>
           </div>
         </article>
@@ -7362,34 +8120,70 @@ input, select, textarea {
     // ==========================================
     const slides = [
       {
-        title: "Bahrain Ministry Services",
-        label: "MINISTRY SERVICES",
-        image: "assets/ministry.svg",
-        color: "#1e3f30"
+        title: "Document Attestation",
+        eyebrow: "DMS BAHRAIN",
+        label: "ATTESTATION",
+        image: "assets/Stamped paper with purple seals.png",
+        color: "#ffffff",
+        theme: "light",
+        badges: [
+          { icon: "✓", text: "Official Ministry & Embassy Attestation" },
+          { icon: "▤", text: "MOFA Legalization & Consular Authentication" },
+          { icon: "↗", text: "Certified Translation & Expedited Clearance" }
+        ]
       },
       {
-        title: "Document Attestation",
-        label: "ATTESTATION",
-        image: "assets/attestation.svg",
-        color: "#283b32"
+        title: "Bahrain Ministry Services",
+        eyebrow: "DMS BAHRAIN",
+        label: "MINISTRY SERVICES",
+        image: "assets/Hand Supporting a Green Folder.png",
+        color: "#ffffff",
+        theme: "light",
+        badges: [
+          { icon: "✓", text: "Clear guidance. Every step." },
+          { icon: "▤", text: "Document review and application support" },
+          { icon: "↗", text: "Solutions for your next chapter" }
+        ]
       },
       {
         title: "Saudi Visa Assistance",
+        eyebrow: "DMS BAHRAIN",
         label: "SAUDI VISA",
         image: "assets/saudi-visa.svg",
-        color: "#163428"
+        color: "#163428",
+        theme: "dark",
+        badges: [
+          { icon: "✓", text: "Direct Embassy Liaison" },
+          { icon: "▤", text: "Business, Family & Transit Visas" },
+          { icon: "↗", text: "Priority Expedited Processing" }
+        ]
       },
       {
         title: "Self-Sponsorship Residency",
+        eyebrow: "DMS BAHRAIN",
         label: "SELF SPONSORSHIP",
         image: "assets/residency.svg",
-        color: "#1d3a33"
+        color: "#1d3a33",
+        theme: "dark",
+        badges: [
+          { icon: "✓", text: "10-Year Golden Residency Pathways" },
+          { icon: "▤", text: "Property Owner & Investor Visas" },
+          { icon: "↗", text: "Full Family Sponsorship Support" }
+        ]
       },
       {
         title: "Global Visa Assistance",
+        eyebrow: "DMS BAHRAIN",
         label: "GLOBAL VISA",
-        image: "assets/global-visa.svg",
-        color: "#253b2e"
+        image: "assets/global-visa-reference.png",
+        color: "#163f30",
+        theme: "dark",
+        isGlobe: true,
+        badges: [
+          { icon: "✓", text: "Schengen, UK & US Travel Guidance" },
+          { icon: "▤", text: "End-to-End File Preparation" },
+          { icon: "↗", text: "High Approval Success Rate" }
+        ]
       }
     ];
 
@@ -7417,7 +8211,7 @@ input, select, textarea {
     // Create slides and matching thumbnail buttons.
     slides.forEach((slide, index) => {
       const article = document.createElement("article");
-      article.className = "banner-slide";
+      article.className = "banner-slide" + (slide.theme === "light" ? " is-light" : "") + (slide.isGlobe ? " is-globe" : "");
       article.style.setProperty("--slide-color", slide.color);
       article.setAttribute("aria-roledescription", "slide");
       article.setAttribute(
@@ -7480,12 +8274,59 @@ input, select, textarea {
       thumbnails.appendChild(button);
     });
 
+    // Generate 5 small gradient gray pagination dots
+    const dotsContainer = document.querySelector(".banner-dots");
+    if (dotsContainer) {
+      dotsContainer.innerHTML = "";
+      slides.forEach((slide, idx) => {
+        const dot = document.createElement("button");
+        dot.type = "button";
+        dot.className = "banner-dot" + (idx === 0 ? " is-active" : "");
+        dot.setAttribute("role", "tab");
+        dot.setAttribute("aria-label", `Go to slide ${idx + 1}: ${slide.title}`);
+        dot.setAttribute("aria-selected", String(idx === 0));
+        dot.addEventListener("click", () => {
+          showSlide(idx, true);
+        });
+        dotsContainer.appendChild(dot);
+      });
+    }
+
     function showSlide(index, announce = false) {
       currentSlide = (index + slides.length) % slides.length;
       elapsed = 0;
 
+      const currentSlideData = slides[currentSlide];
+
+      // Update banner theme attribute (light for white background on card 2, dark for green)
+      banner.setAttribute("data-theme", currentSlideData.theme || "dark");
+
       track.style.transform = `translateX(-${currentSlide * 100}%)`;
-      caption.textContent = slides[currentSlide].title;
+      caption.textContent = currentSlideData.title;
+
+      const captionEyebrow = document.querySelector(".banner-caption .eyebrow");
+      if (captionEyebrow && currentSlideData.eyebrow) {
+        captionEyebrow.textContent = currentSlideData.eyebrow;
+      }
+
+      // Update glassmorphism badges per slide
+      const badgesContainer = document.querySelector(".banner-badges");
+      if (badgesContainer && currentSlideData.badges) {
+        badgesContainer.innerHTML = currentSlideData.badges.map(b => `
+          <div class="banner-badge">
+            <span class="badge-icon" aria-hidden="true">${b.icon}</span>
+            <span>${b.text}</span>
+          </div>
+        `).join("");
+      }
+
+      // Update 5 dots active state
+      const dots = document.querySelectorAll(".banner-dot");
+      dots.forEach((dot, idx) => {
+        const isActive = idx === currentSlide;
+        dot.classList.toggle("is-active", isActive);
+        dot.setAttribute("aria-selected", String(isActive));
+      });
 
       [...thumbnails.children].forEach((button, index) => {
         const active = index === currentSlide;
@@ -7494,14 +8335,16 @@ input, select, textarea {
 
         button.querySelector(".thumbnail-progress span").style.width = "0%";
 
-        track.children[index].setAttribute(
-          "aria-hidden",
-          String(!active)
-        );
+        if (track.children[index]) {
+          track.children[index].setAttribute(
+            "aria-hidden",
+            String(!active)
+          );
+        }
       });
 
       if (announce) {
-        status.textContent = slides[currentSlide].title;
+        status.textContent = currentSlideData.title;
       }
 
       // Keep the active thumbnail visible on mobile.

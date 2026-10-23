@@ -65,58 +65,41 @@ const oldCardTwoThree = `    <!-- SECOND CARD: ADD YOUR DESIGN HERE -->
         </article>
       </div>`;
 
-const newCardTwoThree = `    <!-- SECOND CARD: CORPORATE MOBILITY & RESIDENCE PERMITS -->
+const newCardTwoThree = `    <!-- SECOND CARD: DOCUMENT ATTESTATION SERVICES (FULL RIGHT IMAGE WITH LEFT GRADIENT) -->
       <div class="dgs-slot" style="--i: 1;">
-        <article class="dgs-card">
-          <div class="dgs-golden-layout">
-            <div class="dgs-copy">
-              <span class="dgs-eyebrow">RESIDENCE &amp; WORK PERMITS</span>
+        <article class="dgs-card dgs-card-attestation">
+          <div class="dgs-attestation-grid">
+            <div class="dgs-attestation-copy">
+              <span class="dgs-eyebrow">LEGALIZATION &amp; AUTHENTICATION</span>
               <h2 class="dgs-heading">
-                Corporate Mobility.<br>
-                Seamless Residency.
+                Document Attestation.<br>
+                Certified &amp; Approved.
               </h2>
               <p class="dgs-description">
-                Direct LMRA &amp; NPRA liaison for investor visas, executive work permits, and self-sponsorship with priority expedited processing.
+                Comprehensive document legalization, MOFA certification, embassy attestation, and certified translation services with priority clearance.
               </p>
               <ul class="dgs-benefits">
-                <li>Investor &amp; partner visas</li>
-                <li>Dependent family sponsorship</li>
-                <li>LMRA ceiling expansions</li>
+                <li>MOFA &amp; Ministry legalization</li>
+                <li>Embassy &amp; consular attestation</li>
+                <li>Certified Arabic &amp; legal translation</li>
               </ul>
               <a class="dgs-link" href="#contact">
-                Explore Residence Services
+                Explore Document Attestation Services
                 <svg viewBox="0 0 24 24" aria-hidden="true">
                   <path d="M5 12h14m-6-6 6 6-6 6"/>
                 </svg>
               </a>
             </div>
-            <div class="dgs-visual">
-              <div class="dgs-reflective">
-                <div class="dgs-metal" style="background: linear-gradient(120deg, #1b4b35 0%, #2f6b4e 25%, #46966f 50%, #25583f 75%, #183e2c 100%); color: #eaf5ed;">
-                  <div class="dgs-metal-top">
-                    <span class="dgs-brand" style="color: #fff;">DMS.</span>
-                    <span class="dgs-country" style="color: #9cd4b5;">RESIDENCE PERMIT</span>
-                  </div>
-                  <div class="dgs-emblem" aria-hidden="true">
-                    <svg viewBox="0 0 24 24" style="stroke: #b5e8cc;">
-                      <rect x="5" y="3" width="14" height="18" rx="2"/>
-                      <circle cx="12" cy="10" r="4"/>
-                      <path d="M8 10h8m-4-4c-2 2-2 6 0 8 m0-8c2 2 2 6 0 8M9 18h6"/>
-                    </svg>
-                  </div>
-                  <div class="dgs-metal-bottom">
-                    <div>
-                      <span class="dgs-metal-label" style="color: #a3deb9;">KINGDOM OF BAHRAIN</span>
-                      <h3 style="color: #fff;">Work &amp; Residency</h3>
-                      <p style="color: #c9ecd7;">Official LMRA / NPRA Liaison</p>
-                    </div>
-                    <svg class="dgs-sparkle" viewBox="0 0 32 32" aria-hidden="true" style="stroke: #bbf0d0;">
-                      <path d="M16 3c0 9-4 13-13 13 9 0 13 4 13 13 0-9 4-13 13-13 -9 0-13-4-13-13Z"/>
-                    </svg>
-                  </div>
-                </div>
-              </div>
-              <span class="dgs-caption">Bahrain Residency &amp; Work Permits</span>
+
+            <div class="dgs-attestation-visual">
+              <div class="dgs-attestation-scrim" aria-hidden="true"></div>
+              <img
+                class="dgs-attestation-img"
+                src="assets/Stamped paper with purple seals.png"
+                alt="Official Embassy of Bahrain stamp seal and attestation document"
+                loading="lazy"
+              >
+              <span class="dgs-attestation-caption">Bahrain Ministry &amp; Embassy Attestation</span>
             </div>
           </div>
         </article>
