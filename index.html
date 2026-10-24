@@ -822,7 +822,7 @@
     
     /* GLOBE BANNER SLIDE */
     .banner-slide.is-globe {
-      background: radial-gradient(circle at 78% 50%, #1c503b 0%, #143d2e 45%, #0c261c 100%);
+      background: #ffffff;
     }
 
     .banner-slide.is-globe > img {
@@ -3572,6 +3572,218 @@ input, select, textarea {
       }
     }
 
+    /* ==========================================================================
+       DMS ABOUT US SECTION
+       ========================================================================== */
+    .dms-about,
+    .dms-about * {
+      box-sizing: border-box;
+    }
+
+    .dms-about {
+      position: relative;
+      isolation: isolate;
+      overflow: hidden;
+      width: calc(100% - 64px);
+      max-width: 1280px;
+      margin: 0 auto 56px;
+      border-radius: 24px;
+      background: #ffffff;
+      color: #4c5360;
+      border: 1px solid rgba(228, 232, 236, 0.85);
+      box-shadow: 0 16px 40px -12px rgba(16, 42, 31, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03);
+      font-family:
+        -apple-system,
+        BlinkMacSystemFont,
+        "Segoe UI",
+        Arial,
+        sans-serif;
+    }
+
+    /* Background banner image */
+    .dms-about__background {
+      position: absolute;
+      inset: 0;
+      z-index: -3;
+      background-image: url("dms-background.png");
+      background-size: cover;
+      background-position: center right;
+      background-repeat: no-repeat;
+    }
+
+    /* White gradient around the banner */
+    .dms-about::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      z-index: -2;
+      pointer-events: none;
+
+      background:
+        linear-gradient(
+          to bottom,
+          #ffffff 0%,
+          rgba(255, 255, 255, 0) 14%,
+          rgba(255, 255, 255, 0) 82%,
+          #ffffff 100%
+        ),
+        linear-gradient(
+          to right,
+          #ffffff 0%,
+          rgba(255, 255, 255, 0.35) 36%,
+          rgba(255, 255, 255, 0) 60%,
+          rgba(255, 255, 255, 0) 93%,
+          #ffffff 100%
+        );
+    }
+
+    .dms-about__inner {
+      width: min(100%, 1440px);
+      min-height: 620px;
+      margin-inline: auto;
+      padding: 64px 40px;
+
+      display: flex;
+      align-items: center;
+    }
+
+    /* Left content panel */
+    .dms-about__panel {
+      width: 51%;
+      padding: 38px 42px 42px;
+
+      border: 1px solid rgba(228, 232, 236, 0.7);
+      border-radius: 28px;
+
+      background:
+        radial-gradient(
+          ellipse at 25% 10%,
+          rgba(255, 255, 255, 1) 0%,
+          rgba(255, 255, 255, 0.93) 45%,
+          rgba(255, 255, 255, 0.72) 100%
+        );
+
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+    }
+
+    /* Transparent logo + 40 Years label */
+    .dms-about__label {
+      display: block;
+      width: min(100%, 420px);
+      height: auto;
+      margin: 0 0 28px;
+      object-fit: contain;
+    }
+
+    .dms-about__heading {
+      margin: 0 0 18px;
+      color: #454c57;
+      font-size: 15px;
+      line-height: 1.3;
+      font-weight: 600;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+    }
+
+    .dms-about__text {
+      margin: 0;
+      font-family: Inter, "Inter Placeholder", sans-serif;
+      font-size: 16px;
+      font-weight: 500;
+      line-height: 24px;
+      letter-spacing: -0.48px;
+      color: #58675d;
+    }
+
+    /* Tablet */
+    @media (max-width: 1024px) {
+      .dms-about__inner {
+        min-height: 580px;
+        padding: 48px 28px;
+      }
+
+      .dms-about__panel {
+        width: 57%;
+        padding: 30px;
+        border-radius: 24px;
+      }
+
+      .dms-about__label {
+        margin-bottom: 24px;
+      }
+
+      .dms-about__text {
+        font-size: 16px;
+        line-height: 1.7;
+      }
+    }
+
+    /* Mobile: photo above, content below */
+    @media (max-width: 640px) {
+      .dms-about__background {
+        inset: 0 0 auto;
+        height: 320px;
+
+        background-size: auto 320px;
+        background-position: right top;
+      }
+
+      .dms-about::before {
+        inset: 0 0 auto;
+        height: 325px;
+
+        background:
+          linear-gradient(
+            to bottom,
+            rgba(255, 255, 255, 0) 55%,
+            rgba(255, 255, 255, 0.65) 82%,
+            #ffffff 100%
+          );
+      }
+
+      .dms-about__inner {
+        display: block;
+        min-height: auto;
+        padding: 285px 18px 32px;
+      }
+
+      .dms-about__panel {
+        width: 100%;
+        padding: 26px 24px 30px;
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.96);
+      }
+
+      .dms-about__label {
+        width: min(100%, 340px);
+        margin-bottom: 24px;
+      }
+
+      .dms-about__heading {
+        font-size: 14px;
+        margin-bottom: 16px;
+      }
+
+      .dms-about__text {
+        font-size: 16px;
+        line-height: 1.75;
+      }
+    }
+
+    @media (max-width: 360px) {
+      .dms-about__inner {
+        padding-inline: 12px;
+      }
+
+      .dms-about__panel {
+        padding-inline: 18px;
+      }
+
+      .dms-about__text {
+        font-size: 15px;
+      }
+    }
 
     /* REFINED GRID */
     .dms-services-grid {
@@ -6878,6 +7090,53 @@ input, select, textarea {
     </div>
   </section>
 
+  <!-- DMS ABOUT US SECTION -->
+  <section
+    class="dms-about"
+    id="about"
+    aria-labelledby="dms-about-heading"
+  >
+
+    <div
+      class="dms-about__background"
+      aria-hidden="true"
+    ></div>
+
+    <div class="dms-about__inner">
+
+      <div class="dms-about__panel">
+
+        <img
+          class="dms-about__label"
+          src="dms-label.png"
+          alt="DMS — 40 Years of Excellence"
+          loading="lazy"
+        />
+
+        <h2
+          class="dms-about__heading"
+          id="dms-about-heading"
+        >
+          About Us
+        </h2>
+
+        <p class="dms-about__text">
+          Diplomat Management Services Co. W.L.L. is a strategic
+          business support and government relations partner in the
+          Kingdom of Bahrain, specializing in government relations
+          services (GRO) and global visa assistance. With more than
+          40 years of experience, we help businesses and individuals
+          navigate compliance requirements, employee administration
+          and procedures involving local government authorities
+          and foreign embassies in Bahrain.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
   <!-- REFINED DMS SERVICES SECTION (User Specification) -->
   <section class="dms-services-section" id="services" aria-label="DMS services">
 
@@ -7275,6 +7534,10 @@ input, select, textarea {
 
 
 
+
+
+  
+  
 
 
   <!-- DMS EXPERTISE & SECTORS SECTION -->
@@ -8149,9 +8412,9 @@ input, select, textarea {
         title: "Saudi Visa Assistance",
         eyebrow: "DMS BAHRAIN",
         label: "SAUDI VISA",
-        image: "assets/saudi-visa.svg",
-        color: "#163428",
-        theme: "dark",
+        image: "assets/saudi-visa-documents.png",
+        color: "#ffffff",
+        theme: "light",
         badges: [
           { icon: "✓", text: "Direct Embassy Liaison" },
           { icon: "▤", text: "Business, Family & Transit Visas" },
@@ -8159,25 +8422,12 @@ input, select, textarea {
         ]
       },
       {
-        title: "Self-Sponsorship Residency",
-        eyebrow: "DMS BAHRAIN",
-        label: "SELF SPONSORSHIP",
-        image: "assets/residency.svg",
-        color: "#1d3a33",
-        theme: "dark",
-        badges: [
-          { icon: "✓", text: "10-Year Golden Residency Pathways" },
-          { icon: "▤", text: "Property Owner & Investor Visas" },
-          { icon: "↗", text: "Full Family Sponsorship Support" }
-        ]
-      },
-      {
         title: "Global Visa Assistance",
         eyebrow: "DMS BAHRAIN",
         label: "GLOBAL VISA",
         image: "assets/global-visa-reference.png",
-        color: "#163f30",
-        theme: "dark",
+        color: "#ffffff",
+        theme: "light",
         isGlobe: true,
         badges: [
           { icon: "✓", text: "Schengen, UK & US Travel Guidance" },
