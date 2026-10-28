@@ -1,257 +1,388 @@
-<style>
-  .dms-about,
-  .dms-about * {
-    box-sizing: border-box;
-  }
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Diplomat Management Services</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
 
-  .dms-about {
-    position: relative;
-    isolation: isolate;
-    overflow: hidden;
-    width: calc(100% - 64px);
-    max-width: 1280px;
-    margin: 0 auto 56px;
-    border-radius: 24px;
-    background: #ffffff;
-    color: #4c5360;
-    border: 1px solid rgba(228, 232, 236, 0.85);
-    box-shadow: 0 16px 40px -12px rgba(16, 42, 31, 0.08), 0 2px 6px rgba(0, 0, 0, 0.03);
-    font-family:
-      -apple-system,
-      BlinkMacSystemFont,
-      "Segoe UI",
-      Arial,
-      sans-serif;
-  }
-
-  /* Background banner image */
-  .dms-about__background {
-    position: absolute;
-    inset: 0;
-    z-index: -3;
-    background-image: url("dms-background.png");
-    background-size: cover;
-    background-position: center right;
-    background-repeat: no-repeat;
-  }
-
-  /* White gradient around the banner */
-  .dms-about::before {
-    content: "";
-    position: absolute;
-    inset: 0;
-    z-index: -2;
-    pointer-events: none;
-
-    background:
-      linear-gradient(
-        to bottom,
-        #ffffff 0%,
-        rgba(255, 255, 255, 0) 14%,
-        rgba(255, 255, 255, 0) 82%,
-        #ffffff 100%
-      ),
-      linear-gradient(
-        to right,
-        #ffffff 0%,
-        rgba(255, 255, 255, 0.35) 36%,
-        rgba(255, 255, 255, 0) 60%,
-        rgba(255, 255, 255, 0) 93%,
-        #ffffff 100%
-      );
-  }
-
-  .dms-about__inner {
-    width: min(100%, 1440px);
-    min-height: 620px;
-    margin-inline: auto;
-    padding: 64px 40px;
-
-    display: flex;
-    align-items: center;
-  }
-
-  /* Left content panel */
-  .dms-about__panel {
-    width: 51%;
-    padding: 38px 42px 42px;
-
-    border: 1px solid rgba(228, 232, 236, 0.7);
-    border-radius: 28px;
-
-    background:
-      radial-gradient(
-        ellipse at 25% 10%,
-        rgba(255, 255, 255, 1) 0%,
-        rgba(255, 255, 255, 0.93) 45%,
-        rgba(255, 255, 255, 0.72) 100%
-      );
-
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
-  }
-
-  /* Transparent logo + 40 Years label */
-  .dms-about__label {
-    display: block;
-    width: min(100%, 420px);
-    height: auto;
-    margin: 0 0 28px;
-    object-fit: contain;
-  }
-
-  .dms-about__heading {
-    margin: 0 0 18px;
-    color: #454c57;
-    font-size: 15px;
-    line-height: 1.3;
-    font-weight: 600;
-    letter-spacing: 0.18em;
-    text-transform: uppercase;
-  }
-
-  .dms-about__text {
-    margin: 0;
-    font-family: Inter, "Inter Placeholder", sans-serif;
-    font-size: 16px;
-    font-weight: 500;
-    line-height: 24px;
-    letter-spacing: -0.48px;
-    color: #58675d;
-  }
-
-  /* Tablet */
-  @media (max-width: 1024px) {
-    .dms-about__inner {
-      min-height: 580px;
-      padding: 48px 28px;
+  <style>
+    * {
+      box-sizing: border-box;
     }
 
-    .dms-about__panel {
-      width: 57%;
-      padding: 30px;
-      border-radius: 24px;
+    body {
+      margin: 0;
+      background: #ffffff;
+      color: #111111;
+      font-family: Inter, "Inter Placeholder", sans-serif;
     }
 
-    .dms-about__label {
-      margin-bottom: 24px;
-    }
-
-    .dms-about__text {
-      font-size: 16px;
-      line-height: 1.7;
-    }
-  }
-
-  /* Mobile: photo above, content below */
-  @media (max-width: 640px) {
-    .dms-about__background {
-      inset: 0 0 auto;
-      height: 320px;
-
-      background-size: auto 320px;
-      background-position: right top;
-    }
-
-    .dms-about::before {
-      inset: 0 0 auto;
-      height: 325px;
-
-      background:
-        linear-gradient(
-          to bottom,
-          rgba(255, 255, 255, 0) 55%,
-          rgba(255, 255, 255, 0.65) 82%,
-          #ffffff 100%
-        );
-    }
-
-    .dms-about__inner {
-      display: block;
+    .hero {
+      position: relative;
+      display: grid;
+      grid-template-columns: 46% 54%;
+      align-items: end;
       min-height: auto;
-      padding: 285px 18px 32px;
+      max-width: 1400px;
+      margin: 0 auto;
+      padding: 0 3% 0;
+      overflow: hidden;
+      isolation: isolate;
+      background: #ffffff;
     }
 
-    .dms-about__panel {
+    /* Subtle background logo watermark on the left bottom */
+    .hero::before {
+      content: "";
+      position: absolute;
+      left: -50px;
+      bottom: -60px;
+      width: 290px;
+      height: 290px;
+      background-image: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 70"><path d="M8 10 C40 10 60 60 92 60 L92 10 C60 10 40 60 8 60 Z" fill="none" stroke="%23288a26" stroke-width="12" stroke-linejoin="round" opacity="0.09"/></svg>');
+      background-repeat: no-repeat;
+      background-size: contain;
+      pointer-events: none;
+      z-index: 0;
+    }
+
+    .intro {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      padding: 0;
+      max-width: 540px;
+    }
+
+    .anniversary {
+      display: block;
+      width: clamp(230px, 22vw, 310px);
+      max-width: 100%;
+      height: auto;
+      object-fit: contain;
+      margin: 0 0 16px 0;
+      filter: drop-shadow(0 4px 14px rgba(0, 0, 0, 0.06));
+    }
+
+    .subtitle {
+      max-width: 480px;
+      margin: 0 0 18px;
+      font-family: Inter, "Inter Placeholder", sans-serif;
+      font-size: clamp(17px, 1.5vw, 22px);
+      font-weight: 400;
+      line-height: 1.35;
+      letter-spacing: -0.5px;
+      color: #222222;
+    }
+
+    .about {
+      position: relative;
+      z-index: 1;
+      margin: 0;
+      padding: 0;
+      max-width: 480px;
+      background: none;
+      border: none;
+      box-shadow: none;
+      color: #111111;
+    }
+
+    .visual {
+      position: relative;
+      min-width: 0;
+      padding: 0;
+      align-self: end;
+      display: flex;
+      flex-direction: column;
+      justify-content: flex-end;
+      height: 100%;
+    }
+
+    .skyline {
+      position: relative;
+      z-index: 1;
       width: 100%;
-      padding: 26px 24px 30px;
-      border-radius: 22px;
-      background: rgba(255, 255, 255, 0.96);
+      max-width: 660px;
+      height: auto;
+      display: block;
+      margin: 0 0 0 auto;
+      pointer-events: none;
+      -webkit-mask-image: 
+        linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%),
+        linear-gradient(to bottom, #000 82%, rgba(0, 0, 0, 0.4) 93%, transparent 100%);
+      mask-image: 
+        linear-gradient(to right, transparent 0%, #000 6%, #000 94%, transparent 100%),
+        linear-gradient(to bottom, #000 82%, rgba(0, 0, 0, 0.4) 93%, transparent 100%);
+      -webkit-mask-composite: destination-in;
+      mask-composite: intersect;
     }
 
-    .dms-about__label {
-      width: min(100%, 340px);
-      margin-bottom: 24px;
+    .about-header {
+      display: flex;
+      align-items: center;
+      gap: 14px;
     }
 
-    .dms-about__heading {
-      font-size: 14px;
-      margin-bottom: 16px;
+    .brand-icon {
+      display: grid;
+      flex: 0 0 46px;
+      place-items: center;
+      height: 46px;
+      border-radius: 10px;
+      background: #e4fad0;
+      border: 1px solid rgba(136, 218, 56, 0.35);
     }
 
-    .dms-about__text {
-      font-size: 16px;
-      line-height: 1.75;
-    }
-  }
-
-  @media (max-width: 360px) {
-    .dms-about__inner {
-      padding-inline: 12px;
+    .brand-icon svg {
+      width: 32px;
+      height: 26px;
+      fill: none;
+      stroke: #256344;
+      stroke-width: 8;
+      stroke-linejoin: round;
     }
 
-    .dms-about__panel {
-      padding-inline: 18px;
+    .eyebrow {
+      margin: 0 0 3px;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: #256344;
+      font-family: 'IBM Plex Mono', monospace, sans-serif;
     }
 
-    .dms-about__text {
+    h2 {
+      margin: 0;
       font-size: 15px;
+      font-weight: 600;
+      line-height: 1.25;
+      letter-spacing: -0.02em;
+      color: #111111;
     }
-  }
-</style>
 
-<section
-  class="dms-about"
-  id="about"
-  aria-labelledby="dms-about-heading"
->
+    .description {
+      margin: 12px 0 0;
+      font-size: 13.5px;
+      line-height: 1.55;
+      letter-spacing: -0.01em;
+      color: #333333;
+    }
 
-  <div
-    class="dms-about__background"
-    aria-hidden="true"
-  ></div>
+    .read-more-text {
+      display: none;
+      margin-top: 8px;
+    }
 
-  <div class="dms-about__inner">
+    .read-more-toggle {
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      margin-top: 10px;
+      padding: 0;
+      background: none;
+      border: none;
+      color: #1d7042;
+      font-family: Inter, sans-serif;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      text-decoration: underline;
+      text-underline-offset: 3px;
+      transition: opacity 0.2s ease, transform 0.2s ease;
+    }
 
-    <div class="dms-about__panel">
+    .read-more-toggle:hover {
+      opacity: 0.85;
+      transform: translateX(2px);
+      color: #0b4926;
+    }
 
+    /* Modal Dialog from User Code */
+    .about-dialog {
+      width: min(90vw, 520px);
+      max-height: 85vh;
+      padding: 32px 34px;
+      overflow: auto;
+      border: 0;
+      border-radius: 20px;
+      background: #ffffff;
+      color: #263b30;
+      box-shadow: 0 25px 80px rgba(0, 0, 0, 0.35);
+      font-family: Inter, sans-serif;
+    }
+
+    .about-dialog::backdrop {
+      background: rgba(20, 35, 27, 0.65);
+      -webkit-backdrop-filter: blur(8px);
+      backdrop-filter: blur(8px);
+    }
+
+    .about-dialog h2 {
+      margin-top: 0;
+      margin-bottom: 16px;
+      font-size: 22px;
+      font-weight: 600;
+      color: #17382b;
+      letter-spacing: -0.5px;
+    }
+
+    .about-dialog p {
+      margin: 0 0 14px;
+      font-size: 15px;
+      line-height: 1.6;
+      color: #3f5146;
+    }
+
+    .about-dialog .close-button {
+      display: inline-block;
+      margin-top: 10px;
+      padding: 10px 22px;
+      border: 0;
+      border-radius: 8px;
+      background: #33433b;
+      color: #ffffff;
+      font-family: Inter, sans-serif;
+      font-size: 14px;
+      font-weight: 500;
+      cursor: pointer;
+      transition: background 0.2s ease;
+    }
+
+    .about-dialog .close-button:hover {
+      background: #17382b;
+    }
+
+    .about-dialog .close-button:focus-visible {
+      outline: 3px solid #80b623;
+      outline-offset: 3px;
+    }
+
+    .services {
+      display: flex;
+      align-items: center;
+      gap: 16px;
+      margin: 0;
+      padding: 18px 0 0;
+      list-style: none;
+      border-top: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    .services li {
+      flex: 1;
+      font-size: 13px;
+      font-weight: 500;
+      color: rgba(255, 255, 255, 0.9);
+    }
+
+    .services li + li {
+      padding-left: 18px;
+      border-left: 1px solid rgba(255, 255, 255, 0.2);
+    }
+
+    @media (max-width: 767px) {
+      .hero {
+        display: block;
+        padding: 24px 20px 24px;
+      }
+
+      .intro {
+        padding: 0;
+      }
+
+      .desktop-break {
+        display: none;
+      }
+
+      .subtitle {
+        max-width: 520px;
+        margin-bottom: 20px;
+        font-size: 20px;
+        line-height: 28px;
+        letter-spacing: -0.5px;
+      }
+
+      .anniversary {
+        width: 240px;
+        max-width: 85%;
+        margin-left: 0;
+      }
+
+      .visual {
+        margin-top: 24px;
+        padding-top: clamp(200px, 60vw, 360px);
+        padding-bottom: 0;
+      }
+
+      .skyline {
+        top: 0;
+        bottom: auto;
+        left: -20px;
+        width: calc(100% + 40px);
+      }
+
+      .about {
+        margin: 0;
+        padding: 22px 20px;
+        border-radius: 15px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <main class="hero">
+    <section class="intro" aria-labelledby="about-title">
       <img
-        class="dms-about__label"
-        src="dms-label.png"
-        alt="DMS — 40 Years of Excellence"
-        loading="lazy"
+        class="anniversary"
+        src="../assets/40-years-excellence.png"
+        alt="Diplomat — 40 years of excellence"
+        width="2172"
+        height="724"
       >
 
-      <h2
-        class="dms-about__heading"
-        id="dms-about-heading"
-      >
-        About Us
-      </h2>
-
-      <p class="dms-about__text">
-        Diplomat Management Services Co. W.L.L. is a strategic
-        business support and government relations partner in the
-        Kingdom of Bahrain, specializing in government relations
-        services (GRO) and global visa assistance. With more than
-        40 years of experience, we help businesses and individuals
-        navigate compliance requirements, employee administration
-        and procedures involving local government authorities
-        and foreign embassies in Bahrain.
+      <p class="subtitle">
+        Business support, government relations and global visa assistance.
       </p>
 
+      <section class="about" aria-label="About DMS">
+        <div class="description">
+          <p style="margin: 0;">
+            More than 40 years of experience helping businesses and individuals navigate compliance, employee administration and government procedures in Bahrain.
+          </p>
+          <div class="read-more-text" id="about-read-more-content">
+            <p style="margin: 8px 0 0;">
+              Founded with a commitment to excellence, Diplomat Management Services provides comprehensive corporate structuring, full liaison with ministries, licensing, and end-to-end immigration solutions tailored to multinational corporations and ambitious enterprises in the Kingdom of Bahrain.
+            </p>
+          </div>
+          <button
+            type="button"
+            class="read-more-toggle"
+            id="read-more"
+            onclick="var c = document.getElementById('about-read-more-content'); var isExp = c.style.display === 'block'; c.style.display = isExp ? 'none' : 'block'; this.textContent = isExp ? 'Read more \u2192' : 'Read less \u2191'; this.setAttribute('aria-expanded', !isExp);"
+            aria-expanded="false"
+            aria-controls="about-read-more-content"
+          >
+            Read more &rarr;
+          </button>
+        </div>
+      </section>
+    </section>
+
+    <div class="visual">
+      <img
+        class="skyline"
+        src="../assets/Mint%20Logo%20Over%20Twin-Tower%20Waterfront%20Skyline.png"
+        alt="Mint Logo Over Twin-Tower Waterfront Skyline"
+        width="1470"
+        height="1070"
+      >
     </div>
-
-  </div>
-
-</section>
+  </main>
+</body>
+</html>
